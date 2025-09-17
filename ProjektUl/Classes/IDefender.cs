@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProjektUl.Classes
 {
-    internal class IDefender
+    internal interface IDefender
     {
+        int DefenseStrength { get; }
+        bool IsOnGuard { get; set; }
+        void DefendHive(int attackStrength);
     }
 }
+

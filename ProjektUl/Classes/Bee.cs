@@ -4,9 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ProjektUl.Classes
 {
-    internal class Bee
+    internal abstract class Bee
     {
+        public string Name { get; protected set; }
+        public int Age { get; set; }
+        public int DailyHoneyConsumption { get; protected set; }
+        public bool IsAlive { get; set; } = true;
+
+        protected Bee(string name, int age, int dailyHoneyConsumption)
+        {
+            Name = name;
+            Age = age;
+            DailyHoneyConsumption = dailyHoneyConsumption;
+        }
+
+        // Każda pszczoła wykonuje swoje zadania w ciągu dnia
+        public abstract void DoDailyWork(Hive hive);
+
+        // Rola/typ pszczoły (np. "Queen", "Worker")
+        public abstract string GetRole();
     }
 }
+
