@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProjektUl.Classes
 {
-    internal class INectarCollector
+    internal interface INectarCollector
     {
+        int CollectionEfficiency { get; }
+        bool CanCollect { get; }
+        int CollectNectar();
     }
 }
+
