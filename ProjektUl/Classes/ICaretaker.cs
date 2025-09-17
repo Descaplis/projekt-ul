@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ProjektUl.Classes
 {
-    internal class ICaretaker
+    internal interface ICaretaker
     {
+        int CaretakingCapacity { get; }
+        bool IsCaretaking { get; set; }
+        void CareForYoung(int youngBeesCount);
     }
 }
