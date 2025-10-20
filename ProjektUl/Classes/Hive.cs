@@ -19,6 +19,8 @@ namespace ProjektUl.Classes
         public int Day { get; set; } = 1;
         public bool IsUnderAttack { get; set; } = false;
         public DateTime SimulationStartDate { get; set; }
+        public List<LogEntry> logs;
+
 
         public Hive(DateTime simulationStartDate)
         {
@@ -44,13 +46,21 @@ namespace ProjektUl.Classes
         // - loguje podsumowanie dnia
         public void PassDay()
         {
-            throw new NotImplementedException();
+            Day++;
+            foreach (var bee in Bees)
+            {
+                bee.Age++;
+                bee.DoDailyWork(this);
+            }
+            // check random events
+            // log summary of queen, collecting nectar, caring for young bees and staying on defence
+            ConvertNectarToHoney();
         }
 
-        // Konwersja zebranych jednostek nektaru do jednostek miodu.
-        // W implementacji warto ustalić współczynnik konwersji i ewentualne straty.
         public void ConvertNectarToHoney()
         {
+            HoneyStored += NectarCollected;
+            NectarCollected = 0;
             throw new NotImplementedException();
         }
 
@@ -77,11 +87,15 @@ namespace ProjektUl.Classes
             throw new NotImplementedException();
         }
 
-        // Przydatna metoda pomocnicza: oblicza aktualny czas symulacji na podstawie StartDate i Day.
-        // Można tu również dodać losową godzinę (np. wydarzenia dnia).
         public DateTime GetCurrentSimulationTime()
         {
-            throw new NotImplementedException();
+            return SimulationStartDate.AddDays(Day - 1); // day - 1 because it starts with day 1 not with day 0
+        }
+
+        public void LogAndWrite(LogEntry log)
+        {
+            logs.Add(log);
+            Console.WriteLine(log.Description);
         }
     }
 }
