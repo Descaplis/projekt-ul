@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|c:\\users\\porer\\desktop\\albarmaja\\projekt-ul\\projektul\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|solutionrelative:projektul\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|c:\\users\\porer\\desktop\\albarmaja\\projekt-ul\\projektul\\classes\\queen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|solutionrelative:projektul\\classes\\queen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|c:\\users\\porer\\desktop\\albarmaja\\projekt-ul\\projektul\\classes\\guard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|solutionrelative:projektul\\classes\\guard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|c:\\users\\porer\\desktop\\albarmaja\\projekt-ul\\projektul\\classes\\hive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|solutionrelative:projektul\\classes\\hive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|c:\\users\\porer\\desktop\\albarmaja\\projekt-ul\\projektul\\classes\\logentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|solutionrelative:projektul\\classes\\logentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Program.cs",
+              "RelativeDocumentMoniker": "ProjektUl\\Program.cs",
+              "ToolTip": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Program.cs",
+              "RelativeToolTip": "ProjektUl\\Program.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwB4AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T11:55:31.852Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Queen.cs",
+              "DocumentMoniker": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\Queen.cs",
+              "RelativeDocumentMoniker": "ProjektUl\\Classes\\Queen.cs",
+              "ToolTip": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\Queen.cs",
+              "RelativeToolTip": "ProjektUl\\Classes\\Queen.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T07:55:20.981Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Guard.cs",
+              "DocumentMoniker": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\Guard.cs",
+              "RelativeDocumentMoniker": "ProjektUl\\Classes\\Guard.cs",
+              "ToolTip": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\Guard.cs",
+              "RelativeToolTip": "ProjektUl\\Classes\\Guard.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T07:46:12.888Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LogEntry.cs",
+              "DocumentMoniker": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\LogEntry.cs",
+              "RelativeDocumentMoniker": "ProjektUl\\Classes\\LogEntry.cs",
+              "ToolTip": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\LogEntry.cs",
+              "RelativeToolTip": "ProjektUl\\Classes\\LogEntry.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T09:18:10.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Hive.cs",
+              "DocumentMoniker": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\Hive.cs",
+              "RelativeDocumentMoniker": "ProjektUl\\Classes\\Hive.cs",
+              "ToolTip": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\Hive.cs",
+              "RelativeToolTip": "ProjektUl\\Classes\\Hive.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T09:16:46.559Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
