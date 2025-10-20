@@ -3,6 +3,34 @@
   "WorkspaceRootPath": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|c:\\users\\porer\\desktop\\albarmaja\\projekt-ul\\projektul\\classes\\bee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|solutionrelative:projektul\\classes\\bee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|c:\\users\\porer\\desktop\\albarmaja\\projekt-ul\\projektul\\classes\\logentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|solutionrelative:projektul\\classes\\logentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|c:\\users\\porer\\desktop\\albarmaja\\projekt-ul\\projektul\\classes\\hive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|solutionrelative:projektul\\classes\\hive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|c:\\users\\porer\\desktop\\albarmaja\\projekt-ul\\projektul\\classes\\guard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|solutionrelative:projektul\\classes\\guard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|c:\\users\\porer\\desktop\\albarmaja\\projekt-ul\\projektul\\classes\\drone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|solutionrelative:projektul\\classes\\drone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|c:\\users\\porer\\desktop\\albarmaja\\projekt-ul\\projektul\\classes\\queen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|solutionrelative:projektul\\classes\\queen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|c:\\users\\porer\\desktop\\albarmaja\\projekt-ul\\projektul\\classes\\icaretaker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|solutionrelative:projektul\\classes\\icaretaker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|c:\\users\\porer\\desktop\\albarmaja\\projekt-ul\\projektul\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85663325-A1A9-47AA-9B9B-E6A42278D87D}|ProjektUl\\ProjektUl.csproj|solutionrelative:projektul\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -14,17 +42,108 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LogEntry.cs",
+              "DocumentMoniker": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\LogEntry.cs",
+              "RelativeDocumentMoniker": "ProjektUl\\Classes\\LogEntry.cs",
+              "ToolTip": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\LogEntry.cs",
+              "RelativeToolTip": "ProjektUl\\Classes\\LogEntry.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T09:18:10.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Queen.cs",
+              "DocumentMoniker": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\Queen.cs",
+              "RelativeDocumentMoniker": "ProjektUl\\Classes\\Queen.cs",
+              "ToolTip": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\Queen.cs",
+              "RelativeToolTip": "ProjektUl\\Classes\\Queen.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T09:16:59.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ICaretaker.cs",
+              "DocumentMoniker": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\ICaretaker.cs",
+              "RelativeDocumentMoniker": "ProjektUl\\Classes\\ICaretaker.cs",
+              "ToolTip": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\ICaretaker.cs",
+              "RelativeToolTip": "ProjektUl\\Classes\\ICaretaker.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T09:16:47.639Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Hive.cs",
+              "DocumentMoniker": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\Hive.cs",
+              "RelativeDocumentMoniker": "ProjektUl\\Classes\\Hive.cs",
+              "ToolTip": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\Hive.cs",
+              "RelativeToolTip": "ProjektUl\\Classes\\Hive.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T09:16:46.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Guard.cs",
+              "DocumentMoniker": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\Guard.cs",
+              "RelativeDocumentMoniker": "ProjektUl\\Classes\\Guard.cs",
+              "ToolTip": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\Guard.cs",
+              "RelativeToolTip": "ProjektUl\\Classes\\Guard.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA1wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T09:16:45.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Drone.cs",
+              "DocumentMoniker": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\Drone.cs",
+              "RelativeDocumentMoniker": "ProjektUl\\Classes\\Drone.cs",
+              "ToolTip": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\Drone.cs",
+              "RelativeToolTip": "ProjektUl\\Classes\\Drone.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T09:16:22.306Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Bee.cs",
+              "DocumentMoniker": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\Bee.cs",
+              "RelativeDocumentMoniker": "ProjektUl\\Classes\\Bee.cs",
+              "ToolTip": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Classes\\Bee.cs",
+              "RelativeToolTip": "ProjektUl\\Classes\\Bee.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T09:16:17.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Program.cs",
               "RelativeDocumentMoniker": "ProjektUl\\Program.cs",
               "ToolTip": "C:\\Users\\porer\\Desktop\\albarmaja\\projekt-ul\\ProjektUl\\Program.cs",
               "RelativeToolTip": "ProjektUl\\Program.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAgwB4AAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAQwB4AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-17T11:55:31.852Z",
               "EditorCaption": ""

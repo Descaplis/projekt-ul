@@ -1,13 +1,10 @@
-﻿class Program
+﻿using ProjektUl.Classes;
+
+class Program
 {
     static void Main(string[] args)
     {
-        int beesCount;
-        int workersCount;
-        int guardsCount;
-        int dronesCount;
-        int honey;
-        int youngBees;
+        int beesCount, workersCount, guardsCount, dronesCount, honey, youngBees;
 
         Console.WriteLine("Wpisz, ile chcesz mieć pszczół (min. 25):");
         beesCount = Convert.ToInt32(Console.ReadLine());
@@ -28,6 +25,21 @@
         youngBees = Convert.ToInt32(Math.Ceiling(beesCount * 0.15));
 
 
-        DateTime SimulationStartDay = DateTime.Now;
+        Hive hive = new Hive(DateTime.Now);
+        Random random = new Random();
+        Queen queen = new Queen("queen", random.Next(50, 280));
+        hive.AddBee(queen);
+        for (int i = 0; i < guardsCount; i++) {
+            Guard bee = new Guard($"guard{i}", random.Next(8, 31));
+            hive.AddBee(bee);
+        }
+        for (int i = 0; i < workersCount; i++) {
+            Worker bee = new Worker($"worker{i}", random.Next(8, 40));
+            hive.AddBee(bee);
+        }
+        for (int i = 0; i < dronesCount; i++) {
+            Drone bee = new Drone($"drone{i}", random.Next(8, 51));
+            hive.AddBee(bee);
+        }
     }
 }
