@@ -10,6 +10,6 @@ namespace ProjektUl.Classes
     {
         int CaretakingCapacity { get; }
         bool IsCaretaking { get; set; }
-        void CareForYoung(int youngBeesCount);
+        int CareForYoung(int youngBeesCount);
     }
 }

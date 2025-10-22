@@ -14,6 +14,7 @@ namespace ProjektUl.Classes
         public int DailyHoneyConsumption { get; protected set; }
         public bool IsAlive { get; set; } = true;
 
+
         protected Bee(string name, int age, int dailyHoneyConsumption)
         {
             Name = name;
@@ -26,6 +27,7 @@ namespace ProjektUl.Classes
 
         // Rola/typ pszczoły (np. "Queen", "Worker")
         public abstract string GetRole();
+        public abstract int DaysToLive();
     }
 }
 

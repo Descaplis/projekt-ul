@@ -16,6 +16,7 @@ namespace ProjektUl.Classes
         public int HoneyStored { get; set; } = 0; // jednostki miodu
         public int NectarCollected { get; set; } = 0; // tymczasowe zbiory przed konwersją
         public int YoungBees { get; set; } = 0; // liczba larw/młodych oczekujących na dorastanie
+        public int YoungBeesLookedAfter { get; set; } = 0; // liczba młodych, które są teraz pod opieką
         public int Day { get; set; } = 1;
         public bool IsUnderAttack { get; set; } = false;
         public DateTime SimulationStartDate { get; set; }
@@ -47,10 +48,20 @@ namespace ProjektUl.Classes
         public void PassDay()
         {
             Day++;
+            NectarCollected = 0;
+            
             foreach (var bee in Bees)
             {
                 bee.Age++;
-                bee.DoDailyWork(this);
+                if (bee.Age >= bee.DaysToLive())
+                {
+                    bee.IsAlive = false;
+                }
+                else
+                {
+                    HoneyStored -= bee.DailyHoneyConsumption;
+                    bee.DoDailyWork(this);
+                }
             }
             // check random events
             // log summary of queen, collecting nectar, caring for young bees and staying on defence

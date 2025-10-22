@@ -10,7 +10,7 @@ namespace ProjektUl.Classes
     {
         public int ReproductiveRatePerDay { get; set; }
         public int CaretakingCapacity => 10;
-        public bool IsCaretaking { get; set; } = true;
+        public bool IsCaretaking { get; set; } = false;
 
         public Queen(string name, int age, int reproductiveRate = 20) : base(name, age, dailyHoneyConsumption: 50)
         {
@@ -19,12 +19,13 @@ namespace ProjektUl.Classes
 
         public override void DoDailyWork(Hive hive)
         {
-            throw new NotImplementedException();
+            hive.YoungBees += new Random().Next(20, 26) * ReproductiveRatePerDay;
         }
 
         public override string GetRole() => "Queen";
+        public override int DaysToLive() => 365;
 
-        public void CareForYoung(int youngBeesCount)
+        public int CareForYoung(int youngBeesCount)
         {
             throw new NotImplementedException();
         }

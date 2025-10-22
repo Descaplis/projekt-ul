@@ -21,6 +21,7 @@ namespace ProjektUl.Classes
         }
 
         public override string GetRole() => "Guard";
+        public override int DaysToLive() => 35;
 
         public void DefendHive(int attackStrength)
         {
