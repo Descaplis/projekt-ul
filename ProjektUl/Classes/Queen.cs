@@ -51,7 +51,7 @@ namespace ProjektUl.Classes
 
         public int CareForYoung(int youngBeesCount)
         {
-            return youngBeesCount > CaretakingCapacity ? CaretakingCapacity : youngBeesCount
+            return youngBeesCount > CaretakingCapacity ? CaretakingCapacity : youngBeesCount;
         }
     }
 }

@@ -25,6 +25,7 @@ namespace ProjektUl.Classes
         public int defenseStrength;
         public DateTime SimulationStartDate { get; set; }
         public List<LogEntry> logs;
+        private Random random = new Random();
 
 
         public Hive(DateTime simulationStartDate)
@@ -51,9 +52,9 @@ namespace ProjektUl.Classes
         // - loguje podsumowanie dnia
         public void PassDay()
         {
-            Random random = new Random();
             Day++;
             NectarCollected = 0;
+            defenseStrength = 0;
 
             // rozwój młodych pszczół
             foreach (YoungBee youngeBee in YoungBees)
@@ -152,12 +153,12 @@ namespace ProjektUl.Classes
             LogAndWrite(new LogEntry(
                 GetCurrentSimulationTime(),
                 Day,
-                $"{Bees.Where(bee => bee.GetRole() == "Drone").Count()} trutni zajęło się młodymi pszczołami"
+                $"{CountRole("Drone")} trutni zajęło się młodymi pszczołami"
             ));
             LogAndWrite(new LogEntry(
                 GetCurrentSimulationTime(),
                 Day,
-                $"{Bees.Where(bee => bee.GetRole() == "Guard").Count()} strażnic stoi na warcie. Siła obrony: {defenseStrength}"
+                $"{CountRole("Guard")} strażnic stoi na warcie. Siła obrony: {defenseStrength}"
                 ));
         }
 
@@ -171,8 +172,10 @@ namespace ProjektUl.Classes
         public void DefendAgainstAttack()
         {
             // losowa siła ataku bazuje na ilości pszczół w ulu
-            int beesCount = Bees.Count;
-            int attackStrength;
+            int guardsCount = Bees.Where(bee => bee.GetRole() == "Guard").Count();
+            // attackRate is the multipliter of defenseCount, from 0.8 to 1.35
+            double attackRate = random.NextDouble() * 0.55 + 0.8; // random * (max - min) + min
+            int attackStrength = random.Next((int)Math.Ceiling(defenseStrength * 0.8), (int)Math.Ceiling(defenseStrength * 1.35));
             LogAndWrite(new LogEntry(
                 GetCurrentSimulationTime(),
                 Day,
@@ -183,17 +186,40 @@ namespace ProjektUl.Classes
                 Day,
                 $"Siła ataku szerszeni: {attackStrength}. Siła obrony: {defenseStrength}."
                 ));
+            if (attackRate >= 1)
+            {
+                LogAndWrite(new LogEntry(
+                    GetCurrentSimulationTime(),
+                    Day,
+                    $"Szerszenie są silniejsze. Wygrały. Przegrałeś."
+                   ));
+            } else
+            {
+                double difference = 1 - attackRate; // difference between defense strength and attack strength in percents (1% - 20%)
+                int guardsLoss = (int)Math.Ceiling(CountRole("Guard") * difference * 0.11);
+                int workersLoss = (int)Math.Ceiling(CountRole("Worker") * difference * 0.12);
+                LogAndWrite(new LogEntry(
+                    GetCurrentSimulationTime(),
+                    Day,
+                    $"Pszczoły obroniły swój ul. Straty: {guardsLoss} strażnic i {workersLoss} robotnic"
+                    ));
+            }
         }
 
         public DateTime GetCurrentSimulationTime()
         {
-            return SimulationStartDate.AddDays(Day - 1); // day - 1 because it starts with day 1 not with day 0
+            return SimulationStartDate.AddDays(Day - 1); // day - 1 ponieważ zaczynamy dniem 1 a nie dniem 0
+        }
+        // function to count how many bees from a role
+        public int CountRole(string role)
+        {
+            return Bees.Where(bee => bee.GetRole() == role).Count();
         }
 
         public void LogAndWrite(LogEntry log)
         {
             logs.Add(log);
-            Console.WriteLine(log.Description);
+            Console.WriteLine($"[{log.SimulationTime}] Dzień {log.Day}. {log.Description}");
         }
     }
 }

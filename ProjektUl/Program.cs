@@ -7,7 +7,7 @@ class Program
         int beesCount, workersCount, guardsCount, dronesCount;
         Random random = new Random();
 
-        Console.WriteLine("Wpisz, ile chcesz mieć pszczół (min. 100):");
+        Console.WriteLine("Wpisz, ile chcesz mieć pszczół (min. 10000):");
         beesCount = Convert.ToInt32(Console.ReadLine());
         while (beesCount < 10000)
         {
@@ -25,13 +25,13 @@ class Program
         Hive hive = new Hive(DateTime.Now);
         hive.HoneyStored = beesCount * 10;
 
-        int youngBeesCount = (int)(Math.Ceiling(beesCount * 0.14));
+        int youngBeesCount = (int)(Math.Ceiling(beesCount * 0.15));
         for (int i = 0; i < youngBeesCount; i++)
         {
             hive.YoungBees.Add(new YoungBee(random.Next(1, 6)));
         }
 
-        Queen queen = new Queen(random.Next(50, 280), (27 * beesCount) / 1000); // to policzenie ile młodych pszczół rodzi królowa mniej więcej odzwierciedla rzeczywistość
+        Queen queen = new Queen(random.Next(50, 280), (28 * beesCount) / 1000); // to policzenie ile młodych pszczół rodzi królowa mniej więcej odzwierciedla rzeczywistość
         hive.AddBee(queen);
         for (int i = 0; i < guardsCount; i++) {
             Guard bee = new Guard(random.Next(8, 31));
