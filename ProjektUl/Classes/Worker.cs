@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProjektUl.Classes
 {
-    internal class Worker : Bee, IDefender, INectarCollector
+    internal class Worker : Bee, INectarCollector
     {
         public double CollectionEfficiency { get; private set; }
         public bool CanCollect { get; private set; } = true;
 
-        public int DefenseStrength => 8;
         public bool IsOnGuard { get; set; } = false;
 
         public Worker(int age) : base(age, dailyHoneyConsumption: 5)
@@ -33,12 +32,7 @@ namespace ProjektUl.Classes
         public int CollectNectar()
         {
             // 50-150
-            return (int)((int) 100 * CollectionEfficiency);
-        }
-
-        public void DefendHive(int attackStrength)
-        {
-            throw new NotImplementedException();
+            return (int)(100 * CollectionEfficiency);
         }
     }
 }

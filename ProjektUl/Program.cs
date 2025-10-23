@@ -2,9 +2,14 @@
 
 class Program
 {
+    static public void EndSimulation()
+    {
+        Environment.Exit(0);
+    }
+
     static void Main(string[] args)
     {
-        int beesCount, workersCount, guardsCount, dronesCount;
+        int beesCount, workersCount, guardsCount, dronesCount, daysGoal;
         Random random = new Random();
 
         Console.WriteLine("Wpisz, ile chcesz mieć pszczół (min. 10000):");
@@ -14,6 +19,15 @@ class Program
             Console.WriteLine("Musisz mieć minimum 10 000 pszczół");
             Console.WriteLine("Wpisz jeszcze raz:");
             beesCount = Convert.ToInt32(Console.ReadLine());
+        }
+
+        Console.WriteLine("Wpisz, jaki jest twój cel przetrwania (ilość dni) (min.10):");
+        daysGoal = Convert.ToInt32(Console.ReadLine());
+        while (daysGoal < 10)
+        {
+            Console.WriteLine("Wpisz minimum 10 dni");
+            Console.WriteLine("Wpisz jeszcze raz:");
+            daysGoal = Convert.ToInt32(Console.ReadLine());
         }
 
         // Liczenie, ile pszczół z każdego rodzaju, miodu i zapasu młodych pszczół
@@ -28,7 +42,8 @@ class Program
         int youngBeesCount = (int)(Math.Ceiling(beesCount * 0.15));
         for (int i = 0; i < youngBeesCount; i++)
         {
-            hive.YoungBees.Add(new YoungBee(random.Next(1, 6)));
+            YoungBee youngBee = new YoungBee(random.Next(1, 6));
+            hive.YoungBees.Add(youngBee);
         }
 
         Queen queen = new Queen(random.Next(50, 280), (28 * beesCount) / 1000); // to policzenie ile młodych pszczół rodzi królowa mniej więcej odzwierciedla rzeczywistość
@@ -47,5 +62,14 @@ class Program
         }
 
         Console.WriteLine("Symulacja rozpoczęta");
+        while (daysGoal > hive.Day)
+        {
+            hive.PassDay();
+            Console.WriteLine("Wciśnij ENTER, aby przejść dalej");
+            Console.ReadLine();
+        }
+        Console.WriteLine("---------------------");
+        Console.WriteLine($"Wygrałeś. Twój ul przeżył {daysGoal} dni");
+        Console.WriteLine("---------------------");
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Net.Security;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,14 +18,14 @@ namespace ProjektUl.Classes
         public List<Bee> Bees { get; } = new List<Bee>();
         public int HoneyStored { get; set; } = 0;
         public int NectarCollected { get; set; } = 0; // tymczasowe zbiory przed konwersją
-        public List<YoungBee> YoungBees;
-        public List<YoungBee> YoungBeesLookedAfter; // młode, które są teraz pod opieką
+        public List<YoungBee> YoungBees = new List<YoungBee>();
+        public List<YoungBee> YoungBeesLookedAfter = new List<YoungBee>(); // młode, które są teraz pod opieką
         public int newBeesCount; // ile młodych urodzila królowa
         public int Day { get; set; } = 1;
         public bool IsUnderAttack { get; set; } = false;
-        public int defenseStrength;
+        public int defenseStrength = 0;
         public DateTime SimulationStartDate { get; set; }
-        public List<LogEntry> logs;
+        public List<LogEntry> logs = new List<LogEntry>();
         private Random random = new Random();
 
 
@@ -48,7 +49,6 @@ namespace ProjektUl.Classes
         // - wywołuje DoDailyWork u każdej pszczoły
         // - obsługuje konwersję nektaru na miód
         // - sprawdza losowe zdarzenia (np. atak) i wywołuje DefendAgainstAttack
-        // - wykonuje opiekę nad młodymi (CareForYoungBees)
         // - loguje podsumowanie dnia
         public void PassDay()
         {
@@ -57,7 +57,7 @@ namespace ProjektUl.Classes
             defenseStrength = 0;
 
             // rozwój młodych pszczół
-            foreach (YoungBee youngeBee in YoungBees)
+            foreach (YoungBee youngeBee in YoungBees.ToList())
             {
                 youngeBee.age++;
                 if (youngeBee.age == 8)
@@ -93,6 +93,10 @@ namespace ProjektUl.Classes
                 else
                 {
                     HoneyStored -= bee.DailyHoneyConsumption;
+                    if (HoneyStored <= 0)
+                    {
+                        EndSimulation("Przegrana. Zabrakło miodu.");
+                    }
                     bee.DoDailyWork(this);
                 }
             }
@@ -127,7 +131,7 @@ namespace ProjektUl.Classes
                 } else
                 {
                     // dodatkowe źródło nektaru
-                    int bonusNectar = random.Next(300, 500);
+                    int bonusNectar = random.Next(300, 550);
                     LogAndWrite(new LogEntry(
                         GetCurrentSimulationTime(),
                         Day,
@@ -138,7 +142,6 @@ namespace ProjektUl.Classes
             // system wygranej i przegranej
 
             // log summary of queen, collecting nectar, caring for young bees and staying on defense
-            ConvertNectarToHoney();
 
             LogAndWrite(new LogEntry(
                 GetCurrentSimulationTime(),
@@ -160,22 +163,21 @@ namespace ProjektUl.Classes
                 Day,
                 $"{CountRole("Guard")} strażnic stoi na warcie. Siła obrony: {defenseStrength}"
                 ));
+
+            ConvertNectarToHoney();
         }
 
         public void ConvertNectarToHoney()
         {
             HoneyStored += NectarCollected;
             NectarCollected = 0;
-            throw new NotImplementedException();
         }
 
         public void DefendAgainstAttack()
         {
-            // losowa siła ataku bazuje na ilości pszczół w ulu
-            int guardsCount = Bees.Where(bee => bee.GetRole() == "Guard").Count();
-            // attackRate is the multipliter of defenseCount, from 0.8 to 1.35
-            double attackRate = random.NextDouble() * 0.55 + 0.8; // random * (max - min) + min
-            int attackStrength = random.Next((int)Math.Ceiling(defenseStrength * 0.8), (int)Math.Ceiling(defenseStrength * 1.35));
+            // attackRate to mnożnik defenseStrength, 0.8 - 1.3
+            double attackRate = random.NextDouble() * 0.5 + 0.8; // random * (max - min) + min
+            int attackStrength = (int)(defenseStrength * attackRate);
             LogAndWrite(new LogEntry(
                 GetCurrentSimulationTime(),
                 Day,
@@ -188,16 +190,24 @@ namespace ProjektUl.Classes
                 ));
             if (attackRate >= 1)
             {
-                LogAndWrite(new LogEntry(
-                    GetCurrentSimulationTime(),
-                    Day,
-                    $"Szerszenie są silniejsze. Wygrały. Przegrałeś."
-                   ));
+                EndSimulation("Szerszenie są silniejsze. Wygrały. Przegrałeś.");
             } else
             {
                 double difference = 1 - attackRate; // difference between defense strength and attack strength in percents (1% - 20%)
                 int guardsLoss = (int)Math.Ceiling(CountRole("Guard") * difference * 0.11);
                 int workersLoss = (int)Math.Ceiling(CountRole("Worker") * difference * 0.12);
+                List<Bee> workers = (List<Bee>)Bees.Where(bee => bee.GetRole() == "Worker");
+                List<Bee> guards = (List<Bee>)Bees.Where(bee => bee.GetRole() == "Guard");
+
+                for (int i = 0; i < guardsLoss; i++)
+                {
+                    guards.Remove(guards[0]);
+                }
+                for (int i = 0; i < workersLoss; i++)
+                {
+                    guards.Remove(workers[0]);
+                }
+
                 LogAndWrite(new LogEntry(
                     GetCurrentSimulationTime(),
                     Day,
@@ -220,6 +230,15 @@ namespace ProjektUl.Classes
         {
             logs.Add(log);
             Console.WriteLine($"[{log.SimulationTime}] Dzień {log.Day}. {log.Description}");
+        }
+        public void EndSimulation(string message)
+        {
+            LogAndWrite(new LogEntry(
+                GetCurrentSimulationTime(),
+                Day,
+                message
+                ));
+            Program.EndSimulation();
         }
     }
 }
