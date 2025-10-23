@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,12 +15,14 @@ namespace ProjektUl.Classes
     internal class Hive
     {
         public List<Bee> Bees { get; } = new List<Bee>();
-        public int HoneyStored { get; set; } = 0; // jednostki miodu
+        public int HoneyStored { get; set; } = 0;
         public int NectarCollected { get; set; } = 0; // tymczasowe zbiory przed konwersją
-        public int YoungBees { get; set; } = 0; // liczba larw/młodych oczekujących na dorastanie
-        public int YoungBeesLookedAfter { get; set; } = 0; // liczba młodych, które są teraz pod opieką
+        public List<YoungBee> YoungBees;
+        public List<YoungBee> YoungBeesLookedAfter; // młode, które są teraz pod opieką
+        public int newBeesCount; // ile młodych urodzila królowa
         public int Day { get; set; } = 1;
         public bool IsUnderAttack { get; set; } = false;
+        public int defenseStrength;
         public DateTime SimulationStartDate { get; set; }
         public List<LogEntry> logs;
 
@@ -47,15 +51,43 @@ namespace ProjektUl.Classes
         // - loguje podsumowanie dnia
         public void PassDay()
         {
+            Random random = new Random();
             Day++;
             NectarCollected = 0;
+
+            // rozwój młodych pszczół
+            foreach (YoungBee youngeBee in YoungBees)
+            {
+                youngeBee.age++;
+                if (youngeBee.age == 8)
+                {
+                    // młoda pszczoła staje się dorosła - 85% robotnica, 6% truteń, 9% strażnica
+                    Bee newBee;
+                    if (random.NextDouble() <= 0.85)
+                    {
+                        newBee = new Worker(8);
+                    }
+                    {
+                        if (random.NextDouble() <= 0.4)
+                        {
+                            newBee = new Drone(8);
+                        } else
+                        {
+                            newBee = new Guard(8);
+                        }
+                    }
+                    AddBee(newBee);
+                    YoungBees.Remove(youngeBee);
+                }
+            }
             
-            foreach (var bee in Bees)
+            foreach (Bee bee in Bees)
             {
                 bee.Age++;
-                if (bee.Age >= bee.DaysToLive())
+                if (bee.Age >= bee.DaysToLive()) // sprawdzamy, czy pszczoła umarła ze starości
                 {
                     bee.IsAlive = false;
+                    RemoveBee(bee);
                 }
                 else
                 {
@@ -63,9 +95,70 @@ namespace ProjektUl.Classes
                     bee.DoDailyWork(this);
                 }
             }
-            // check random events
-            // log summary of queen, collecting nectar, caring for young bees and staying on defence
+
+            // Po wykonaniu prac, przenosimy młode pszczoły pod opieką do listy wszystkich i aktualizujemy te na liście youngBees, aby dni bez opieki były liczone
+            foreach (YoungBee youngBee in YoungBees) {
+                youngBee.daysNotBeingCared++;
+                HoneyStored -= 2;
+            }
+            YoungBees.RemoveAll(youngBee => youngBee.daysNotBeingCared == 2);
+            YoungBeesLookedAfter.AddRange(YoungBees); // teraz zaopiekowane młode to wszystkie młode pszczoły
+            YoungBees.Clear();
+            YoungBees.AddRange(YoungBeesLookedAfter);
+            YoungBeesLookedAfter.Clear();
+
+            // Random events
+            if (random.NextDouble() <= 0.08)
+            {
+                double eventType = random.NextDouble();
+                if (eventType >= 0.5)
+                {
+                    DefendAgainstAttack();
+                } else if (eventType >= 0.9)
+                {
+                    // Deszcz
+                    NectarCollected = 0;
+                    LogAndWrite(new LogEntry(
+                        GetCurrentSimulationTime(),
+                        Day,
+                        "Dzisiaj pada deszcz. Robotnice nie mogą zbierać nektaru"
+                        ));
+                } else
+                {
+                    // dodatkowe źródło nektaru
+                    int bonusNectar = random.Next(300, 500);
+                    LogAndWrite(new LogEntry(
+                        GetCurrentSimulationTime(),
+                        Day,
+                        $"Znaleziono skupisko nektaru! Bonusowe {bonusNectar} plastrów nektaru."
+                        ));
+                }
+            }
+            // system wygranej i przegranej
+
+            // log summary of queen, collecting nectar, caring for young bees and staying on defense
             ConvertNectarToHoney();
+
+            LogAndWrite(new LogEntry(
+                GetCurrentSimulationTime(),
+                Day,
+                $"Królowa urodziła {newBeesCount} młodych pszczół"
+            ));
+            LogAndWrite(new LogEntry(
+                GetCurrentSimulationTime(),
+                Day,
+                $"Robotnice zebrały {NectarCollected} jednostek nektaru i przerobiły je na miód"
+            ));
+            LogAndWrite(new LogEntry(
+                GetCurrentSimulationTime(),
+                Day,
+                $"{Bees.Where(bee => bee.GetRole() == "Drone").Count()} trutni zajęło się młodymi pszczołami"
+            ));
+            LogAndWrite(new LogEntry(
+                GetCurrentSimulationTime(),
+                Day,
+                $"{Bees.Where(bee => bee.GetRole() == "Guard").Count()} strażnic stoi na warcie. Siła obrony: {defenseStrength}"
+                ));
         }
 
         public void ConvertNectarToHoney()
@@ -75,27 +168,21 @@ namespace ProjektUl.Classes
             throw new NotImplementedException();
         }
 
-        // Wywoływana w przypadku ataku; powinna:
-        // - obliczyć sumaryczną siłę obrony (OfType<IDefender>())
-        // - porównać z attackStrength
-        // - zadecydować o stratach (śmierć pszczół, spadek miodu itp.)
-        public void DefendAgainstAttack(int attackStrength)
+        public void DefendAgainstAttack()
         {
-            throw new NotImplementedException();
-        }
-
-        // Powinna zebrać nektar od wszystkich pszczół implementujących INectarCollector
-        // i zsumować go do NectarCollected (niekonwertowanego).
-        public void CollectNectarFromWorkers()
-        {
-            throw new NotImplementedException();
-        }
-
-        // Powinna rozdzielić opiekę nad YoungBees pomiędzy ICaretaker i odpowiednio zaktualizować licznik młodych
-        // (np. część larw dorasta do pełnoprawnych pszczół).
-        public void CareForYoungBees()
-        {
-            throw new NotImplementedException();
+            // losowa siła ataku bazuje na ilości pszczół w ulu
+            int beesCount = Bees.Count;
+            int attackStrength;
+            LogAndWrite(new LogEntry(
+                GetCurrentSimulationTime(),
+                Day,
+                $"Atak szerszeni!"
+                ));
+            LogAndWrite(new LogEntry(
+                GetCurrentSimulationTime(),
+                Day,
+                $"Siła ataku szerszeni: {attackStrength}. Siła obrony: {defenseStrength}."
+                ));
         }
 
         public DateTime GetCurrentSimulationTime()

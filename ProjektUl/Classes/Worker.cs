@@ -14,7 +14,7 @@ namespace ProjektUl.Classes
         public int DefenseStrength => 8;
         public bool IsOnGuard { get; set; } = false;
 
-        public Worker(string name, int age) : base(name, age, dailyHoneyConsumption: 5)
+        public Worker(int age) : base(age, dailyHoneyConsumption: 5)
         {
             CollectionEfficiency = new Random().NextDouble() + 0.5;
         }

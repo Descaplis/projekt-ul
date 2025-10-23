@@ -12,17 +12,23 @@ namespace ProjektUl.Classes
         public int CaretakingCapacity => 6;
         public bool IsCaretaking { get; set; } = false;
 
-        public Drone(string name, int age) : base(name, age, dailyHoneyConsumption: 8)
+        public Drone(int age) : base(age, dailyHoneyConsumption: 8)
         {
         }
 
         public override void DoDailyWork(Hive hive)
         {
-            if (hive.YoungBeesLookedAfter < hive.YoungBees)
+            if (hive.YoungBees.Count > 0)
             {
-                // If there are less than 10 young bees to look after, take them
                 IsCaretaking = true;
-                hive.YoungBeesLookedAfter += CareForYoung(hive.YoungBees);
+                for (int i = 0; i <  CareForYoung(hive.YoungBees.Count); i++)
+                {
+                    // przenosimy młodą pszczołę do listy młodych pod opieką
+                    hive.YoungBeesLookedAfter.Add(hive.YoungBees[0]);
+                    hive.YoungBees[0].isCared = true;
+                    hive.YoungBees[0].daysNotBeingCared = 0;
+                    hive.YoungBees.Remove(hive.YoungBees[0]);
+                }
             } else
             {
                 IsCaretaking = false;
