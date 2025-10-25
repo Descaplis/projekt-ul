@@ -8,23 +8,19 @@ namespace ProjektUl.Classes
 {
     internal class Guard : Bee, IDefender
     {
-        public int DefenseStrength => 15;
-        public bool IsOnGuard { get; set; } = true;
+        public int DefenseStrength { get; set; }
 
-        public Guard(string name, int age) : base(name, age, dailyHoneyConsumption: 7)
+        public Guard(int age) : base(age, dailyHoneyConsumption: 7)
         {
+            DefenseStrength = new Random().Next(13, 19);
         }
 
         public override void DoDailyWork(Hive hive)
         {
-            throw new NotImplementedException();
+            hive.defenseStrength += DefenseStrength;
         }
 
         public override string GetRole() => "Guard";
-
-        public void DefendHive(int attackStrength)
-        {
-            throw new NotImplementedException();
-        }
+        public override int DaysToLive() => 35;
     }
 }

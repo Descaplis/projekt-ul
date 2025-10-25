@@ -8,7 +8,7 @@ namespace ProjektUl.Classes
 {
     internal interface INectarCollector
     {
-        int CollectionEfficiency { get; }
+        double CollectionEfficiency { get; }
         bool CanCollect { get; }
         int CollectNectar();
     }

@@ -11,8 +11,13 @@ namespace ProjektUl.Classes
     {
         public DateTime SimulationTime { get; set; }
         public int Day { get; set; }
-        public string EventType { get; set; }
         public string Description { get; set; }
-        public Dictionary<string, object> Data { get; set; }
+
+        public LogEntry(DateTime simulationTime, int day, string description)
+        {
+            SimulationTime = simulationTime;
+            Day = day;
+            Description = description;
+        }
     }
 }

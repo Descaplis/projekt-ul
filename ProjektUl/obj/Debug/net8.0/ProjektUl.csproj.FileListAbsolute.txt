@@ -1,0 +1,15 @@
+C:\Users\porer\Desktop\albarmaja\projekt-ul\ProjektUl\bin\Debug\net8.0\ProjektUl.exe
+C:\Users\porer\Desktop\albarmaja\projekt-ul\ProjektUl\bin\Debug\net8.0\ProjektUl.deps.json
+C:\Users\porer\Desktop\albarmaja\projekt-ul\ProjektUl\bin\Debug\net8.0\ProjektUl.runtimeconfig.json
+C:\Users\porer\Desktop\albarmaja\projekt-ul\ProjektUl\bin\Debug\net8.0\ProjektUl.dll
+C:\Users\porer\Desktop\albarmaja\projekt-ul\ProjektUl\bin\Debug\net8.0\ProjektUl.pdb
+C:\Users\porer\Desktop\albarmaja\projekt-ul\ProjektUl\obj\Debug\net8.0\ProjektUl.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\porer\Desktop\albarmaja\projekt-ul\ProjektUl\obj\Debug\net8.0\ProjektUl.AssemblyInfoInputs.cache
+C:\Users\porer\Desktop\albarmaja\projekt-ul\ProjektUl\obj\Debug\net8.0\ProjektUl.AssemblyInfo.cs
+C:\Users\porer\Desktop\albarmaja\projekt-ul\ProjektUl\obj\Debug\net8.0\ProjektUl.csproj.CoreCompileInputs.cache
+C:\Users\porer\Desktop\albarmaja\projekt-ul\ProjektUl\obj\Debug\net8.0\ProjektUl.sourcelink.json
+C:\Users\porer\Desktop\albarmaja\projekt-ul\ProjektUl\obj\Debug\net8.0\ProjektUl.dll
+C:\Users\porer\Desktop\albarmaja\projekt-ul\ProjektUl\obj\Debug\net8.0\refint\ProjektUl.dll
+C:\Users\porer\Desktop\albarmaja\projekt-ul\ProjektUl\obj\Debug\net8.0\ProjektUl.pdb
+C:\Users\porer\Desktop\albarmaja\projekt-ul\ProjektUl\obj\Debug\net8.0\ProjektUl.genruntimeconfig.cache
+C:\Users\porer\Desktop\albarmaja\projekt-ul\ProjektUl\obj\Debug\net8.0\ref\ProjektUl.dll
