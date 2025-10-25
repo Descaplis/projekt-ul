@@ -21,7 +21,7 @@ namespace ProjektUl.Classes
         public List<YoungBee> YoungBees = new List<YoungBee>();
         public List<YoungBee> YoungBeesLookedAfter = new List<YoungBee>(); // młode, które są teraz pod opieką
         public int newBeesCount; // ile młodych urodzila królowa
-        public int Day { get; set; } = 1;
+        public int Day { get; set; } = 0;
         public bool IsUnderAttack { get; set; } = false;
         public int defenseStrength = 0;
         public DateTime SimulationStartDate { get; set; }
@@ -82,7 +82,7 @@ namespace ProjektUl.Classes
                 }
             }
             
-            foreach (Bee bee in Bees)
+            foreach (Bee bee in Bees.ToList())
             {
                 bee.Age++;
                 if (bee.Age >= bee.DaysToLive()) // sprawdzamy, czy pszczoła umarła ze starości
@@ -113,7 +113,7 @@ namespace ProjektUl.Classes
             YoungBeesLookedAfter.Clear();
 
             // Random events
-            if (random.NextDouble() <= 0.08)
+            if (random.NextDouble() <= 0.1)
             {
                 double eventType = random.NextDouble();
                 if (eventType >= 0.5)
@@ -153,6 +153,7 @@ namespace ProjektUl.Classes
                 Day,
                 $"Robotnice zebrały {NectarCollected} jednostek nektaru i przerobiły je na miód"
             ));
+            ConvertNectarToHoney();
             LogAndWrite(new LogEntry(
                 GetCurrentSimulationTime(),
                 Day,
@@ -162,9 +163,12 @@ namespace ProjektUl.Classes
                 GetCurrentSimulationTime(),
                 Day,
                 $"{CountRole("Guard")} strażnic stoi na warcie. Siła obrony: {defenseStrength}"
+                ));            
+            LogAndWrite(new LogEntry(
+                GetCurrentSimulationTime(),
+                Day,
+                $"Miód: {HoneyStored}"
                 ));
-
-            ConvertNectarToHoney();
         }
 
         public void ConvertNectarToHoney()
@@ -196,8 +200,8 @@ namespace ProjektUl.Classes
                 double difference = 1 - attackRate; // difference between defense strength and attack strength in percents (1% - 20%)
                 int guardsLoss = (int)Math.Ceiling(CountRole("Guard") * difference * 0.11);
                 int workersLoss = (int)Math.Ceiling(CountRole("Worker") * difference * 0.12);
-                List<Bee> workers = (List<Bee>)Bees.Where(bee => bee.GetRole() == "Worker");
-                List<Bee> guards = (List<Bee>)Bees.Where(bee => bee.GetRole() == "Guard");
+                List<Bee> workers = Bees.Where(bee => bee.GetRole() == "Worker").ToList();
+                List<Bee> guards = Bees.Where(bee => bee.GetRole() == "Guard").ToList();
 
                 for (int i = 0; i < guardsLoss; i++)
                 {

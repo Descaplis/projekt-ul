@@ -9,25 +9,54 @@ class Program
 
     static void Main(string[] args)
     {
-        int beesCount, workersCount, guardsCount, dronesCount, daysGoal;
+        int beesCount = 0, workersCount, guardsCount, dronesCount, daysGoal = 0;
         Random random = new Random();
 
         Console.WriteLine("Wpisz, ile chcesz mieć pszczół (min. 10000):");
-        beesCount = Convert.ToInt32(Console.ReadLine());
+        try
+        {
+            beesCount = Convert.ToInt32(Console.ReadLine());
+        }
+        catch (System.FormatException) {
+            Console.WriteLine("Napisz liczbę większą od 10000");
+        }
+
         while (beesCount < 10000)
         {
             Console.WriteLine("Musisz mieć minimum 10 000 pszczół");
             Console.WriteLine("Wpisz jeszcze raz:");
-            beesCount = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                beesCount = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (System.FormatException)
+            {
+                Console.WriteLine("Napisz liczbę większą lub równą 10000");
+            }
         }
 
         Console.WriteLine("Wpisz, jaki jest twój cel przetrwania (ilość dni) (min.10):");
-        daysGoal = Convert.ToInt32(Console.ReadLine());
+        try
+        {
+            daysGoal = Convert.ToInt32(Console.ReadLine());
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine("Napisz liczbę większą lub równą 10");
+        }
+
         while (daysGoal < 10)
         {
             Console.WriteLine("Wpisz minimum 10 dni");
             Console.WriteLine("Wpisz jeszcze raz:");
-            daysGoal = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                daysGoal = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (System.FormatException)
+            {
+                Console.WriteLine("Napisz liczbę większą lub równą 10");
+            }
         }
 
         // Liczenie, ile pszczół z każdego rodzaju, miodu i zapasu młodych pszczół
